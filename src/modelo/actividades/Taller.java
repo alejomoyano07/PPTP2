@@ -1,6 +1,9 @@
-package modelo;
+package modelo.actividades;
 
-public class Taller extends Actividad {
+import modelo.Estudiante;
+import modelo.certificacion.Certificable;
+
+public class Taller extends Actividad implements Certificable {
     private boolean requierenotebook;
 
     public Taller(int id,String titulo,int cupomaximo,boolean requierenotebook){
@@ -23,5 +26,11 @@ public class Taller extends Actividad {
 
     public String getTipo(){
         return this.getClass().getSimpleName();
+    }
+    public String generarCertificado(Estudiante estudiante){
+        return "Certificado emitido por "+ENTIDAD_EMISORA
+            +"se deja constancia de que : "+estudiante.getNombre()
+            +" participa en el taller : "+getTitulo()+".";
+
     }
 }
